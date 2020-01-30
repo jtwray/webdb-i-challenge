@@ -25,3 +25,15 @@ async function add(account) {
     const [id] = await db('accounts').insert(account);
     return findById(id);
 }
+
+function update(id, changes) {
+    return db('accounts')
+        .where({ id })
+        .update(changes, '*');
+}
+
+function remove(id) {
+    return db('accounts')
+        .where({ id })
+        .del();
+}
