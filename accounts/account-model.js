@@ -1,7 +1,6 @@
 const db = require("../data/dbConfig.js")
 
-module.exportss = {
-    add,
+module.exports = {
     find,
     findBy,
     findById,
