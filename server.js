@@ -11,7 +11,7 @@ server.use(express.json());
 server.use(helmet());
 server.use(cors());
 
-server.use('/accounts/',accountsRouter);
+server.use('/accounts',accountsRouter);
 
 
 server.get('/',(req,res)=>{

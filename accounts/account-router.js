@@ -1,11 +1,15 @@
+const express = require('express')
 const router = require('express').Router();
 
-const Accounts = require('./accounts-model');
-const checkFor = prop => (req, res, next) =>
-    req.body[prop]
-        ? next()
-        : res.status(400).json({ errorMessage: `required ${prop}` });
+const Accounts = require('./account-model');
 
+function checkFor(prop) {
+    return function (req, res, next) {
+        req.body[prop]
+            ? next()
+            : res.status(400).json({ errorMessage: `required ${prop}` });
+    }
+}
 
 router.get('/', (req, res, next) => {
     Accounts.find()
@@ -78,3 +82,5 @@ router.delete('/:id', (req, res) => {
             res.status(500).json({ message: 'Error removing the account' });
         });
 });
+
+module.exports=router

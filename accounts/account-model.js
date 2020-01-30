@@ -4,7 +4,11 @@ module.exports = {
     find,
     findBy,
     findById,
+    add,
+    update,
+    remove
 }
+
 function find() {
     return db('accounts').select('id', 'name', 'budget');
 }
